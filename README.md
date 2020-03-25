@@ -18,6 +18,8 @@ Uses a THREE.Geometry object. Must convert if not a standard geometry. See https
 
 Example Usage:
 
+```
+
 var staticGeometry = yourThreeJsGeometry;
 var raySearchDebugOn = false;
 var bspTree = new BinarySpacePartition(staticGeometry, function () {
@@ -79,6 +81,7 @@ if(collidesWithBSP(randomPoint){
 	conosle.log("collision at random point ", randomPoint);
 }
 
+```
 	
 ## Authors
 
