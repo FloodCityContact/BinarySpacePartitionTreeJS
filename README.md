@@ -1,4 +1,4 @@
-# Project Title
+# BinarySpacePartitionTreeJS
 
 Binary Space Partiion Tree for Javascript
 
