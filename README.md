@@ -33,7 +33,7 @@ function rayCollidesWithBSP(startPoint, endPoint) {
 	searchBox.bb = new THREE.Box3();
 	searchBox.bb.expandByPoint(startPoint);
 	searchBox.bb.expandByPoint(endPoint);
-	searchBox.bb.expandByVector(new THREE.Vector3(0.1, 0.1, 0.1)); // use some error tailored to your scale here
+	searchBox.bb.expandByVector(new THREE.Vector3(0.1, 0.1, 0.1)); // magic, based on scale
 	if (raySearchDebugOn) {
 		var origin = startPoint.clone();
 		var direction = endPoint.clone().sub(origin).normalize();

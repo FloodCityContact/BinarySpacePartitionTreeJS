@@ -1,7 +1,6 @@
 /* 
  * 
- * A simple binary space partition tree based on an octree and halving.
- * Initialize like this:
+ * A simple binary space partition tree based on an octree. Enjoy !
  * 
  * NEXT, We will doooooo, an MIT license
  * 
@@ -25,9 +24,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  * 
- * global THREE */
+ */
+/* global THREE */
+
 BinarySpacePartition = function (geometry, onLoadComplete, onProgress) {
-    var GRID_SIZE = new THREE.Vector3(1000, 1000, 1000);
     var OVERSIZED_LINE_THRESHOLD = 20; // ERROR DETECTION
     var FACE_LIMIT_PER_NODE = 100;
     var treeBB;
@@ -65,7 +65,7 @@ BinarySpacePartition = function (geometry, onLoadComplete, onProgress) {
         return newNode;
     }
     function splitNode(node) {
-        var tV1 = new THREE.Vector3(), tV2 = new THREE.Vector3(), tV3 = new THREE.Vector3(), tV4 = new THREE.Vector3();
+        var tV1 = new THREE.Vector3(), tV2 = new THREE.Vector3(), tV3 = new THREE.Vector3();
         node.children = [];
         var childSize = node.bb.getSize(tV1);
         childSize.x /= 2;
@@ -78,49 +78,49 @@ BinarySpacePartition = function (geometry, onLoadComplete, onProgress) {
             var childNode = new BSPNode();
             switch (i) {
                 case 0:
-                    tV4.x = min.x;
-                    tV4.y = min.y;
-                    tV4.z = min.z;
+                    tV3.x = min.x;
+                    tV3.y = min.y;
+                    tV3.z = min.z;
                     break;
                 case 1:
-                    tV4.x = min.x;
-                    tV4.y = min.y;
-                    tV4.z = max.z;
+                    tV3.x = min.x;
+                    tV3.y = min.y;
+                    tV3.z = max.z;
                     break;
                 case 2:
-                    tV4.x = max.x;
-                    tV4.y = min.y;
-                    tV4.z = max.z;
+                    tV3.x = max.x;
+                    tV3.y = min.y;
+                    tV3.z = max.z;
                     break;
                 case 3:
-                    tV4.x = max.x;
-                    tV4.y = min.y;
-                    tV4.z = min.z;
+                    tV3.x = max.x;
+                    tV3.y = min.y;
+                    tV3.z = min.z;
                     break;
                 case 4:
-                    tV4.x = min.x;
-                    tV4.y = max.y;
-                    tV4.z = min.z;
+                    tV3.x = min.x;
+                    tV3.y = max.y;
+                    tV3.z = min.z;
                     break;
                 case 5:
-                    tV4.x = min.x;
-                    tV4.y = max.y;
-                    tV4.z = max.z;
+                    tV3.x = min.x;
+                    tV3.y = max.y;
+                    tV3.z = max.z;
                     break;
                 case 6:
-                    tV4.x = max.x;
-                    tV4.y = max.y;
-                    tV4.z = max.z;
+                    tV3.x = max.x;
+                    tV3.y = max.y;
+                    tV3.z = max.z;
                     break;
                 case 7:
-                    tV4.x = max.x;
-                    tV4.y = max.y;
-                    tV4.z = min.z;
+                    tV3.x = max.x;
+                    tV3.y = max.y;
+                    tV3.z = min.z;
                     break;
             }
             childNode.bb = new THREE.Box3();
             childNode.bb.expandByPoint(nodeCenter);
-            childNode.bb.expandByPoint(tV4);
+            childNode.bb.expandByPoint(tV3);
             node.children.push(childNode);
         }
     }
