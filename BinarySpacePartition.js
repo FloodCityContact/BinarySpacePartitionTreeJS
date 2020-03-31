@@ -28,7 +28,7 @@ SOFTWARE.
 /* global THREE */
 
 BinarySpacePartition = function (geometry, onLoadComplete, onProgress) {
-    var OVERSIZED_LINE_THRESHOLD = 20; // ERROR DETECTION
+    var QUESTION_DISTANCE = 20; // magic, based on scale, and how large the largest line in geometry is
     var FACE_LIMIT_PER_NODE = 100;
     var treeBB;
     var root;
@@ -211,7 +211,7 @@ BinarySpacePartition = function (geometry, onLoadComplete, onProgress) {
         tLine2.end.copy(triangle.c);
         tLine3.start.copy(triangle.c);
         tLine3.end.copy(triangle.a);
-        if (tLine1.distance() > OVERSIZED_LINE_THRESHOLD || tLine2.distance() > OVERSIZED_LINE_THRESHOLD || tLine3.distance() > OVERSIZED_LINE_THRESHOLD) {
+        if (tLine1.distance() > QUESTION_DISTANCE || tLine2.distance() > QUESTION_DISTANCE || tLine3.distance() > QUESTION_DISTANCE) {
             return false;
         }
         return true;
